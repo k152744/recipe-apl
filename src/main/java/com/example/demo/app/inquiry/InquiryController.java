@@ -32,13 +32,13 @@ public class InquiryController {
 // 		this.inquiryService = inquiryService;
 // 	}
 	
-	@GetMapping
+	/*@GetMapping
 	public String index(Model model) {
 		
 		//hands-on
 		
 		return "inquiry/index";
-	}
+	}*/
 	
 	@GetMapping("/form")
 	public String form(/*Add parameters. */) {
