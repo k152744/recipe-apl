@@ -13,5 +13,14 @@ public class topController {
     public String top() {
       return "top";
     }
-  
+    
+    @GetMapping("/login")
+    public String login() {
+      return "login";
+    }
+
+    @GetMapping("/signup")
+    public String signUp() {
+      return "sign-up";
+    }
   }

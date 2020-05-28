@@ -1,0 +1,28 @@
+.container-menu-new{
+  border: solid 1px gray;
+  background-color: white;
+  margin: 30px auto;
+  width: 500px;
+  box-shadow: 0 0 8px black;
+  padding: 50px;
+  text-align: center;
+}
+
+.user-title{
+  font-size: 36px;
+  padding-bottom: 10px;
+}
+
+.input-data{
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.form-button{
+  background-color: red;
+  color: white;
+  line-height: 50px;
+  font-size: 16px;
+  width: 80%;
+  margin-top:20px;
+}
