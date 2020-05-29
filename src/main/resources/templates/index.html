@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/top.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div th:replace="~{component/header::header-component}"></div>
+  <div class = "container-menu">
+      <div class = "container-menu-recipe">
+        <h2>レシピ一覧</h2>
+        <p class = "recipe-title-sentence">作りたい料理を選んでください</p>
+        <div class = "container-menu-recipe-list">
+          <ul>
+            <li>
+              <div class = "recipe-image">
+                <img src = "" width="200" height="250">
+              </div>
+              <div class = "recipe-contents">
+                <h3 class = "recipe-title">カルボナーラ</h3>
+                <p class = "recipe-sentence">
+                  ① 麺を茹でる、クリームを入れる
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </div>
+  <div th:replace="~{component/footer::footer-component}"></div>
+</body>
+</html>

@@ -5,6 +5,7 @@
   padding-top:50px;
   background-image: url("../image/back-image.jpg");
   background-size: cover;
+  min-height:100%;
 }
 
 .container-menu{
@@ -13,6 +14,7 @@
   padding-top:50px;
   padding-bottom:120px;
   flex:1;
+  min-height:100%;
 }
 
 #title{
@@ -57,6 +59,24 @@ header{
   z-index: 1;
   width: 100%;
   position: fixed;
+}
+
+.header-menu{
+  float:right;
+}
+
+.header-menu li{
+  float:left;
+  line-height: 50px;
+  padding:0 20px;
+}
+
+.header-menu a{
+  color: white;
+}
+
+.header-menu a:hover{
+  color:red;
 }
 
 footer{
