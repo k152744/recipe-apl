@@ -3,9 +3,9 @@
   <header th:fragment="header-component">
     <div class = "header-menu">
       <ul>
-        <li><a href="/">トップページ</a></li>
-        <li><a href="index">レシピ一覧</a></li>
-        <li><a href="new">レシピを投稿する</a></li>
+        <li><a th:href="@{/}">トップページ</a></li>
+        <li><a th:href="@{/recipe/index}">レシピ一覧</a></li>
+        <li><a th:href="@{/recipe/new}">レシピを投稿する</a></li>
       </ul>
     </div>
   </header>

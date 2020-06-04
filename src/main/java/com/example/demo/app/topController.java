@@ -24,13 +24,4 @@ public class topController {
       return "sign-up";
     }
 
-    @GetMapping("/new")
-    public String newRecipe() {
-      return "new";
-    }
-
-    @GetMapping("/index")
-    public String index() {
-      return "index";
-    }
   }

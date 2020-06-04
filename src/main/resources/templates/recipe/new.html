@@ -13,21 +13,22 @@
     <div class = "container-menu-recipe">
       <h2>レシピを投稿する</h2>
       <p class = "recipe-title-sentence">料理名、画像、レシピ内容を入力しよう</p>
-      <form id="new-recipe">
+      
+      <form id="new-recipe"  method="post" th:action="@{/recipe/index}">
         <div class = "field">
           <label>料理名</label>
           <br>
-          <input placeholder="料理名を入力してください" class = "recipe-dates">
+          <input placeholder="料理名を入力してください" class = "recipe-dates" name = "name">
         </div>
         <div class = "field">
           <label>画像</label>
           <br>
-          <input type="file">
+          <input type="file" name = "image">
         </div>
         <div class = "field">
           <label>レシピ内容</label>
           <br>
-          <textarea placeholder="レシピの内容を入力してください(手順・材料等)"></textarea>
+          <textarea name = "contents" placeholder="レシピの内容を入力してください(手順・材料等)"></textarea>
         </div>
         <div class = "actions">
           <input type="submit" value = "投稿する" class = "submit-btn">
