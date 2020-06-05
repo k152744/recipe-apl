@@ -17,7 +17,7 @@
           <ul th:each="recipe : ${recipeList}">
             <li>
               <div class = "recipe-image">
-                <img th:src = "${recipe.image}" width="200" height="250">
+                <img th:src = "${recipe.base64string}" width="200" height="250">
               </div>
               <div class = "recipe-contents">
                 <h3 class = "recipe-title" th:text="${recipe.name}">料理名</h3>

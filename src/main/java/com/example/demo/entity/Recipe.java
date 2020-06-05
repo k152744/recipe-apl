@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,7 +20,10 @@ public class Recipe {
   private int id;
   
   private String name;
-  private String image;
+  @Column(name = "image_name")
+  private String imageName;
+  @Column(name = "image_binary")
+  private byte[] image;
   private String contents;
 
   /*
@@ -40,15 +44,23 @@ public class Recipe {
     return this.name;
   }
 
+  public void setImageName(String imageName) {
+    this.imageName = imageName;
+  }
+
+  public String getImageName() {
+    return this.imageName;
+  }
+
   public void setName(String name) {
     this.name = name;
   }
 
-  public String getImage() {
+  public byte[] getImage() {
     return this.image;
   }
 
-  public void setImage(String image) {
+  public void setImage(byte[] image) {
     this.image = image;
   }
 

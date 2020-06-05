@@ -14,7 +14,7 @@
       <h2>レシピを投稿する</h2>
       <p class = "recipe-title-sentence">料理名、画像、レシピ内容を入力しよう</p>
       
-      <form id="new-recipe"  method="post" th:action="@{/recipe/index}">
+      <form id="new-recipe"  method="post" th:action="@{/recipe/index}" enctype="multipart/form-data">
         <div class = "field">
           <label>料理名</label>
           <br>
@@ -23,7 +23,7 @@
         <div class = "field">
           <label>画像</label>
           <br>
-          <input type="file" name = "image">
+          <input type="file" name = "image" >
         </div>
         <div class = "field">
           <label>レシピ内容</label>
