@@ -36,4 +36,9 @@ dependencies {
 	compileOnly('org.projectlombok:lombok')
 	runtime('mysql:mysql-connector-java')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	
+	//spring security
+	compile 'org.springframework.boot:spring-boot-starter-security'
+	// thymeleaf(ロール/権限によるthymeleafのテンプレートの制御)
+	compile "org.thymeleaf.extras:thymeleaf-extras-springsecurity5"
 }
