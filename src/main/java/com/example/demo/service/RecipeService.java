@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Base64;
 
 @Service
+//トランザクション処理をかける
 @Transactional
 public class RecipeService {
   
