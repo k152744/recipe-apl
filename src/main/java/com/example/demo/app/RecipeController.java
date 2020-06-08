@@ -2,7 +2,7 @@ package com.example.demo.app;
 
 import com.example.demo.entity.Recipe;
 import com.example.demo.service.RecipeService;
-import com.example.demo.form.RecipeFrom;
+import com.example.demo.form.RecipeForm;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -10,14 +10,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import java.util.List;
 
 @Controller
 @RequestMapping("/recipe")
 public class RecipeController{
+  
+  private final RecipeService recipeService;
+
   @Autowired
-  RecipeService recipeService;
+  public RecipeController(RecipeService recipeService){
+    this.recipeService = recipeService;
+  }
 
   @GetMapping("/new")
   public String newRecipe(Model model) {
@@ -26,7 +30,7 @@ public class RecipeController{
 
   @GetMapping("/index")
   public String index(Model model){
-    List<RecipeFrom> list = recipeService.getRecipeFroms();
+    List<RecipeForm> list = recipeService.getRecipeForms();
     model.addAttribute("recipeList", list);
     return "recipe/index";
   }

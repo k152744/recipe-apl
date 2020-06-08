@@ -9,12 +9,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-//トランザクション処理をかける
 @Transactional
 public class UserService{
-  @Autowired
-  UserRepository userRepository;
+  
+  private final UserRepository userRepository;
 
+  @Autowired 
+  public UserService(UserRepository userRepository){
+    this.userRepository = userRepository;
+  }
+  
   public User postUser(User user){
     return userRepository.save(user);
   }
