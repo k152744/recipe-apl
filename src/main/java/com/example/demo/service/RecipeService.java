@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Recipe;
 import com.example.demo.repository.RecipeRepository;
-import com.example.demo.form.RecipeFrom;
+import com.example.demo.form.RecipeForm;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,12 +35,12 @@ public class RecipeService {
     return recipeRepository.findAll();
   }
 
-  public List<RecipeFrom> getRecipeFroms(){
-    List<RecipeFrom> forms = new ArrayList<RecipeFrom>();
+  public List<RecipeForm> getRecipeForms(){
+    List<RecipeForm> forms = new ArrayList<RecipeForm>();
     List<Recipe> recipes = getRecipe();
 
     for(Recipe recipe:recipes) {
-      RecipeFrom form = new RecipeFrom();
+      RecipeForm form = new RecipeForm();
 
       form.setName(recipe.getName());
       form.setContents(recipe.getContents());

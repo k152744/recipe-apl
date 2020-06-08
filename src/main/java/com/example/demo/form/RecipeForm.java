@@ -5,14 +5,14 @@ import org.springframework.data.annotation.CreatedDate;
 import java.time.LocalDateTime;
 */
 
-public class RecipeFrom {
+public class RecipeForm {
   
   private String name;
   private String extension;
   private String base64string;
   private String contents;
 
-  public RecipeFrom() {};
+  public RecipeForm() {};
 
   public String getName() {
     return this.name;
