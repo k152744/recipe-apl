@@ -6,6 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.CreatedDate;
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name= "user")
 
@@ -16,6 +19,9 @@ public class User{
   private String name;
   private String email;
   private String password;
+
+  @CreatedDate
+  private LocalDateTime created;
 
   public int getId() {
     return this.id;
@@ -49,5 +55,12 @@ public class User{
     this.password = password;
   }
 
+  public LocalDateTime getCreated() {
+    return this.created;
+  }
+
+  public void setCreated(LocalDateTime created) {
+    this.created = created;
+  }
 
 }

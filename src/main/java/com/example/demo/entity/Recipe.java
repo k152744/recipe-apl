@@ -6,10 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-/*
+
 import org.springframework.data.annotation.CreatedDate;
 import java.time.LocalDateTime;
-*/
+
 
 @Entity
 @Table(name= "recipe")
@@ -26,10 +26,10 @@ public class Recipe {
   private byte[] image;
   private String contents;
 
-  /*
+  
   @CreatedDate
   private LocalDateTime created;
-  */
+  
   public Recipe() {};
 
   public int getId() {
@@ -72,7 +72,7 @@ public class Recipe {
     this.contents = contents;
   }
 
-  /*
+  
   public LocalDateTime getCreated() {
     return this.created;
   }
@@ -80,5 +80,5 @@ public class Recipe {
   public void setCreated(LocalDateTime created) {
     this.created = created;
   }
-  */
+  
 }

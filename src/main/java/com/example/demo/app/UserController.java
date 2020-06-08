@@ -25,8 +25,8 @@ public class UserController{
     }
 
     @PostMapping("/signup")
-    public String create(@ModelAttribute User user){
-      userService.postUser(user);
+    public String create(String name,String email,String password){
+      userService.postUser(name,email,password);
       return "redirect:recipe/index";
     }
 }

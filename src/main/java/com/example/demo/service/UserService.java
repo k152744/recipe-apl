@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 
 @Service
 @Transactional
@@ -19,7 +20,14 @@ public class UserService{
     this.userRepository = userRepository;
   }
   
-  public User postUser(User user){
+  public User postUser(String name,String email,String password){
+    User user = new User();
+
+    user.setName(name);
+    user.setEmail(email);
+    user.setPassword(password);
+    user.setCreated(LocalDateTime.now());
+
     return userRepository.save(user);
   }
 }
