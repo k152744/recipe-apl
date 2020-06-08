@@ -10,14 +10,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import java.util.List;
 
 @Controller
 @RequestMapping("/recipe")
 public class RecipeController{
+  
+  private final RecipeService recipeService;
+
   @Autowired
-  RecipeService recipeService;
+  public RecipeController(RecipeService recipeService){
+    this.recipeService = recipeService;
+  }
 
   @GetMapping("/new")
   public String newRecipe(Model model) {

@@ -13,12 +13,15 @@ import java.util.ArrayList;
 import java.util.Base64;
 
 @Service
-//トランザクション処理をかける
 @Transactional
 public class RecipeService {
   
+  private final RecipeRepository recipeRepository;
+
   @Autowired
-  RecipeRepository recipeRepository;
+  public RecipeService(RecipeRepository recipeRepository){
+    this.recipeRepository = recipeRepository;
+  }
 
   public Recipe postRecipe(String name, String contents, String imageName, byte[] image) {
     Recipe recipe = new Recipe();
