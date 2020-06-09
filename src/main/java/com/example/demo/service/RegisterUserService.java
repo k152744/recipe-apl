@@ -4,6 +4,7 @@ import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,21 +12,21 @@ import java.time.LocalDateTime;
 
 @Service
 @Transactional
-public class UserService{
+public class RegisterUserService{
   
   private final UserRepository userRepository;
 
+  @Autowired
+  PasswordEncoder passwordEncoder;
+  
   @Autowired 
-  public UserService(UserRepository userRepository){
+  public RegisterUserService(UserRepository userRepository){
     this.userRepository = userRepository;
   }
   
-  public User postUser(String name,String email,String password){
-    User user = new User();
-
-    user.setName(name);
-    user.setEmail(email);
-    user.setPassword(password);
+  public User postUser(User user){
+    
+    user.setPassword(passwordEncoder.encode(user.getPassword()));
     user.setCreated(LocalDateTime.now());
 
     return userRepository.save(user);

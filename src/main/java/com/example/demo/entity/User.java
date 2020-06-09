@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name= "user")
-
 public class User{
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -62,5 +61,4 @@ public class User{
   public void setCreated(LocalDateTime created) {
     this.created = created;
   }
-
 }
