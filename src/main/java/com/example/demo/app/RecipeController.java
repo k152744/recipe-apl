@@ -1,25 +1,25 @@
 package com.example.demo.app;
 
-import com.example.demo.entity.Recipe;
 import com.example.demo.service.RecipeService;
-import com.example.demo.form.RecipeForm;
-
+import com.example.demo.form.CreateRecipeForm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
+import org.springframework.data.domain.Sort;
 
 @Controller
 @RequestMapping("/recipe")
-public class RecipeController{
-  
+public class RecipeController {
+
   private final RecipeService recipeService;
 
   @Autowired
-  public RecipeController(RecipeService recipeService){
+  public RecipeController(RecipeService recipeService) {
     this.recipeService = recipeService;
   }
 
@@ -29,18 +29,23 @@ public class RecipeController{
   }
 
   @GetMapping("/index")
-  public String index(Model model){
-    List<RecipeForm> list = recipeService.getRecipeForms();
-    model.addAttribute("recipeList", list);
+  public String index(Model model,
+      @PageableDefault(size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+    var pageRecipe = recipeService.getRecipes(pageable);
+    var recipes = recipeService.settingRecipes(pageRecipe);
+    model.addAttribute("recipeList", recipes);
+    model.addAttribute("page", pageRecipe);
+    model.addAttribute("url", "/recipe/index");
     return "recipe/index";
   }
 
   @PostMapping("/index")
-  public String create(@RequestParam("image") MultipartFile multipartFile,@RequestParam("name") String recipeName,@RequestParam("contents") String recipeContents){
-    
-    try{
-      recipeService.postRecipe(recipeName,recipeContents,multipartFile.getOriginalFilename(),multipartFile.getBytes()); 
-    } catch(Exception e){
+  public String create(@Validated CreateRecipeForm form, BindingResult result) {
+
+    try {
+      recipeService.postRecipe(form.getName(), form.getContents() //
+          , form.getImage().getOriginalFilename(), form.getImage().getBytes());
+    } catch (Exception e) {
       System.out.println(e);
     }
 

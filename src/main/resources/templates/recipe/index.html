@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <title>Insert title here</title>
@@ -7,28 +8,49 @@
   <link th:href="@{/css/top.css}" rel="stylesheet" type="text/css">
   <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
 </head>
+
 <body>
   <div th:replace="~{component/header::header-component}"></div>
-  <div class = "container-menu">
-      <div class = "container-menu-recipe">
-        <h2>レシピ一覧</h2>
-        <p class = "recipe-title-sentence">作りたい料理を選んでください</p>
-        <div class = "container-menu-recipe-list">
-          <ul th:each="recipe : ${recipeList}">
-            <li>
-              <div class = "recipe-image">
-                <img th:src = "${recipe.base64string}" width="200" height="250">
-              </div>
-              <div class = "recipe-contents">
-                <h3 class = "recipe-title" th:text="${recipe.name}">料理名</h3>
-                <p class = "recipe-sentence" th:text="${recipe.contents}">
-                  作り方・材料
-                </p>
-              </div>
-            </li>
-          </ul>
-        </div>
+  <div class="container-menu">
+    <div class="container-menu-recipe">
+      <h2>レシピ一覧</h2>
+      <p class="recipe-title-sentence">作りたい料理を選んでください</p>
+      <div class="container-menu-recipe-list">
+        <ul th:each="recipe : ${recipeList}">
+          <li>
+            <div class="recipe-image">
+              <img th:src="${recipe.base64string}" width="200" height="250">
+            </div>
+            <div class="recipe-contents">
+              <h3 class="recipe-title" th:text="${recipe.name}">料理名</h3>
+              <p class="recipe-sentence" th:text="${recipe.contents}">
+                作り方・材料
+              </p>
+            </div>
+          </li>
+        </ul>
       </div>
+    </div>
+    <div th:fragment='paginationbar' class="pagination__wrapper">
+      <nav class="pagination">
+        <ul class="page-numbers">
+          <li>
+            <a th:href="@{${url}(page=0)}"><span>←</span></a>
+          </li>
+          <li th:each='i : ${#numbers.sequence(0, page.totalPages-1)}' th:class="(${i}==${page.number})? 'active' : 'page-content'">
+                <a th:if='${i}==${page.number}' th:href="@{${url}(page=${i})}">
+                  <span th:text='${i+1}'>1</span>
+                </a>
+                <a th:if='${i}!=${page.number}' th:href="@{${url}(page=${i})}">
+                    <span th:text='${i+1}'>1</span>
+                </a>
+            </li>
+            <li>
+                <a  th:href="@{${url}(page=(${page.totalPages}-1))}"><span>➝</span></a>
+            </li>
+        </ul>
+      </nav>
+    </div>
   </div>
   <div th:replace="~{component/footer::footer-component}"></div>
 </body>
