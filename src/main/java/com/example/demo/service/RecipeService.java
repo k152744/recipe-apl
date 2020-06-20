@@ -36,15 +36,11 @@ public class RecipeService {
     return recipeRepository.save(recipe);
   }
 
-  public List<Recipe> getRecipe() {
-    return recipeRepository.findAll();
-  }
-
   public List<RecipeForm> getRecipeForms(){
     List<RecipeForm> forms = new ArrayList<RecipeForm>();
-    List<Recipe> recipes = getRecipe();
 
-    for(Recipe recipe:recipes) {
+    // RecipeをRecipeFormに
+    recipeRepository.findAll().forEach(recipe -> {
       RecipeForm form = new RecipeForm();
 
       form.setName(recipe.getName());
@@ -61,7 +57,7 @@ public class RecipeService {
       }
       
       forms.add(form);
-  }
+    });
 
     return forms;
   }
