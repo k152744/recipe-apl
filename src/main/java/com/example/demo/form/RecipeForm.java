@@ -1,10 +1,8 @@
 package com.example.demo.form;
 
-/*
-import org.springframework.data.annotation.CreatedDate;
-import java.time.LocalDateTime;
-*/
+import lombok.Data;
 
+@Data
 public class RecipeForm {
   
   private String name;
@@ -12,47 +10,4 @@ public class RecipeForm {
   private String base64string;
   private String contents;
 
-  public RecipeForm() {};
-
-  public String getName() {
-    return this.name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public void setExtension(String extension) {
-    this.extension = extension;
-  }
-
-  public String getExtension() {
-    return this.extension;
-  }
-
-  public void setBase64string(String base64string) {
-    this.base64string = base64string;
-  }
-
-  public String getBase64string() {
-    return this.base64string;
-  }
-
-  public String getContents() {
-    return this.contents;
-  }
-
-  public void setContents(String contents) {
-    this.contents = contents;
-  }
-
-  /*
-  public LocalDateTime getCreated() {
-    return this.created;
-  }
-
-  public void setCreated(LocalDateTime created) {
-    this.created = created;
-  }
-  */
 }
