@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.User;
+import com.example.demo.entity.RegistrationUser;
 import com.example.demo.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class RegisterUserService{
     this.userRepository = userRepository;
   }
   
-  public User postUser(User user){
+  public RegistrationUser postUser(RegistrationUser user){
     
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     user.setCreated(LocalDateTime.now());

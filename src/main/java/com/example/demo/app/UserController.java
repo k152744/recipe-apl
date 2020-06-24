@@ -1,7 +1,7 @@
 package com.example.demo.app;
 
 import com.example.demo.service.RegisterUserService;
-import com.example.demo.entity.User;
+import com.example.demo.entity.RegistrationUser;
 import com.example.demo.form.UserForm;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class UserController {
     @PostMapping("/signup")
     public String create(@Validated UserForm userform){
 
-      User user = new User();
+      RegistrationUser user = new RegistrationUser();
 
       user.setName(userform.getName());
       user.setEmail(userform.getEmail());

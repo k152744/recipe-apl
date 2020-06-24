@@ -6,6 +6,11 @@
         <li><a th:href="@{/}">トップページ</a></li>
         <li><a th:href="@{/recipe/index}">レシピ一覧</a></li>
         <li><a th:href="@{/recipe/new}">レシピを投稿する</a></li>
+        <li>
+          <form th:if="${loginUser != ''}" th:action="@{/logout}" method="post">
+            <button type="submit">ログアウト</button>
+          </form>
+        </li>
       </ul>
     </div>
   </header>

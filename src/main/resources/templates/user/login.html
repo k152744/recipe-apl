@@ -12,16 +12,16 @@
   <div class = "container-menu">
     <div class = "container-menu-new">
       <h2 class = "user-title">ログイン</h2>
-      <form>
+      <form th:action = "@{/authenticate}" method = "post">
         <div class = "field">
-          <label>メールアドレス</label>
+          <label>ユーザー名</label>
           <br>
-          <input class = "input-data">
+          <input class = "input-data" name = "name">
         </div>
         <div class = "field">
           <label>パスワード</label>
           <br>
-          <input class = "input-data">
+          <input class = "input-data" name = "password">
         </div>
         <div class = "actions">
           <input type = "submit" value = "ログイン" class = "form-button">
