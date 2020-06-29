@@ -12,11 +12,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Sort;
 
+import com.example.demo.mapper.RecipeMapper;
+
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/recipe")
 public class RecipeController {
 
   private final RecipeService recipeService;
+
+  @Autowired
+  private RecipeMapper recipeMapper;
 
   @Autowired
   public RecipeController(RecipeService recipeService) {
@@ -40,15 +47,22 @@ public class RecipeController {
   }
 
   @PostMapping("/index")
-  public String create(@Validated CreateRecipeForm form, BindingResult result) {
+  public String create(@Validated CreateRecipeForm form, BindingResult result,HttpServletRequest httpServletRequest) {
 
     try {
-      recipeService.postRecipe(form.getName(), form.getContents() //
-          , form.getImage().getOriginalFilename(), form.getImage().getBytes());
+      recipeService.postRecipe(form.getName(), form.getContents() 
+           , form.getImage().getOriginalFilename(), form.getImage().getBytes(),httpServletRequest);
     } catch (Exception e) {
       System.out.println(e);
     }
-
     return "redirect:index";
+  }
+
+  @PostMapping("/index/research")
+  public String search(Model model, @RequestParam("recipeName") String recipeName){
+    var recipes = recipeMapper.searchRecipes(recipeName);
+    var searchRecipes = recipeService.settingMyRecipes(recipes);
+    model.addAttribute("recipeList",searchRecipes);
+    return "recipe/index";
   }
 }

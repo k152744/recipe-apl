@@ -5,6 +5,8 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -25,12 +27,17 @@ public class Recipe {
   private int id;
   @Column(name = "name")
   private String name;
-  @Column(name = "image_name")
-  private String imageName;
-  @Column(name = "image_binary")
-  private byte[] image;
+  @Column(name="imagename")
+  private String imagename;
+  @Column(name = "imagebinary")
+  private byte[] imagebinary;
   @Column(name = "contents")
   private String contents;
+
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  private RegistrationUser registrationUser;
+  
   @CreatedDate
   private LocalDateTime created;
   

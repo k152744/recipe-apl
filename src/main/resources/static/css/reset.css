@@ -136,3 +136,18 @@ a {
 html,body{
   height: 100%; 
 }
+
+button{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
+img{
+  vertical-align: bottom;
+}

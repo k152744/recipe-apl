@@ -14,7 +14,13 @@
   <div class="container-menu">
     <div class="container-menu-recipe">
       <h2>レシピ一覧</h2>
-      <p class="recipe-title-sentence">作りたい料理を選んでください</p>
+      <p class="recipe-title-sentence">作りたい料理を検索してください</p>
+      <div class = "search-form-contents">
+        <form method="post" name="search-post" th:action="@{/recipe/index/research}">
+          <input type="text" class="search-form" id="recipe_name" name="recipeName" th:value="${recipeName}">
+          <input type="submit" value="検索">
+        </form>
+      </div>
       <div class="container-menu-recipe-list">
         <ul th:each="recipe : ${recipeList}">
           <li>

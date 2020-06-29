@@ -5,9 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
 
 import org.springframework.data.annotation.CreatedDate;
 import java.time.LocalDateTime;
+
+import java.util.List;
 
 @Entity
 @Table(name= "user")
@@ -21,6 +25,9 @@ public class RegistrationUser{
 
   @CreatedDate
   private LocalDateTime created;
+
+  @OneToMany(mappedBy = "registrationUser")
+  private List<Recipe> recipeList;
 
   public int getId() {
     return this.id;
@@ -60,5 +67,13 @@ public class RegistrationUser{
 
   public void setCreated(LocalDateTime created) {
     this.created = created;
+  }
+  
+  public List<Recipe> getRecipeList() {
+    return this.recipeList;
+  }
+
+  public void setRecipeList(List<Recipe> recipeList) {
+    this.recipeList = recipeList;
   }
 }
