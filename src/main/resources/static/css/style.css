@@ -62,10 +62,6 @@
   margin-bottom: 30px;
 }
 
-.container-menu-recipe-list{
-  margin-top: 50px;
-}
-
 .container-menu-recipe-list li{
   margin: 0 auto;
   border: 1px solid #EEFFFF;
@@ -168,3 +164,7 @@
   border-radius: 50%;
 }
 
+.search-form-contents{
+  padding:30px;
+  text-align: center;
+}

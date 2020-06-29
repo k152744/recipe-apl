@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface LoginMapper {
   @Select("SELECT id, name, password FROM user WHERE name = #{name}")
-	public Account findAccount(@Param("name") String name);
+  public Account findAccount(@Param("name") String name);
 } 

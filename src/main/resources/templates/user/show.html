@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/top.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/user-show.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div th:replace="~{component/header::header-component}"></div>
+  <div class = "container-menu">
+    <div class = "container-user-show">
+      <h2 class = "user-show-title">プロフィール</h2>
+      <div class = "profile-contents">
+        <div class = "profile-detail">
+          <img th:src="@{/image/profileImage.png}" width="200" height="200">
+          <h3 class = "profile-name" th:text="${username}">ユーザー名</h3>
+          <ul>
+            <a th:href="@{/}"><li class = "profile-btn">プロフィール編集</li></a>
+            <a th:href="@{/recipe/new}"><li class = "profile-btn">レシピ投稿</li></a>
+            <a th:href="@{/}"><li class = "profile-btn">お気に入りレシピ</li></a>
+            <form th:action="@{/logout}" method="post" name="logout" id="logout-form">
+              <a href="javascript:logout.submit()">
+                <li class = "profile-btn" id="logout-value">
+                  ログアウト
+                </li>
+              </a>
+            </form>
+          </ul>
+        </div>
+        <div class = "profile-myrecipe">
+          <h3 class="myrecipe-title">投稿したレシピ一覧</h3>
+          <ul th:each="recipe : ${myRecipes}">
+            <li class="my-recipe-detail">
+              <div class = "my-recipe-image">
+                <img th:src="${recipe.base64string}" width="200" height="250">
+              </div>
+              <div class = "my-recipe-contents">
+                <h3 class="my-recipe-title" th:text="${recipe.name}">料理名</h3>
+                <p class = "my-recipe-sentence" th:text="${recipe.contents}">
+                  作り方・材料
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div th:replace="~{component/footer::footer-component}"></div>
+</body>
