@@ -13,12 +13,18 @@
     <div class = "container-menu-recipe">
       <h2>レシピを投稿する</h2>
       <p class = "recipe-title-sentence">料理名、画像、レシピ内容を入力しよう</p>
-      
       <form id="new-recipe"  method="post" th:action="@{/recipe/index}" enctype="multipart/form-data">
         <div class = "field">
           <label>料理名</label>
           <br>
           <input placeholder="料理名を入力してください" class = "recipe-dates" name = "name">
+        </div>
+        <div class = "field">
+          <label>カテゴリー</label>
+          <br>
+          <select name="category" >
+            <option th:each="item : ${category}" th:value="${item.id}" th:text="${item.name}">カテゴリー名</option>
+          </select>
         </div>
         <div class = "field">
           <label>画像</label>
