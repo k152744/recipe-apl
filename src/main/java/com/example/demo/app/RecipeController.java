@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Sort;
 
 import com.example.demo.mapper.RecipeMapper;
+import com.example.demo.entity.RecipeCategory;
+import com.example.demo.repository.RecipeCategoryRepository;
+
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,12 +30,17 @@ public class RecipeController {
   private RecipeMapper recipeMapper;
 
   @Autowired
+  private RecipeCategoryRepository recipeCategoryRepository;
+
+  @Autowired
   public RecipeController(RecipeService recipeService) {
     this.recipeService = recipeService;
   }
 
   @GetMapping("/new")
   public String newRecipe(Model model) {
+    List<RecipeCategory> category = recipeCategoryRepository.findAll();
+    model.addAttribute("category", category);
     return "recipe/new";
   }
 
@@ -51,7 +60,7 @@ public class RecipeController {
 
     try {
       recipeService.postRecipe(form.getName(), form.getContents() 
-           , form.getImage().getOriginalFilename(), form.getImage().getBytes(),httpServletRequest);
+           , form.getImage().getOriginalFilename(), form.getImage().getBytes(),form.getCategory(),httpServletRequest);
     } catch (Exception e) {
       System.out.println(e);
     }

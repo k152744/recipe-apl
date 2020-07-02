@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Recipe;
+import com.example.demo.entity.RecipeCategory;
 import com.example.demo.entity.RegistrationUser;
 import com.example.demo.repository.RecipeRepository;
 import com.example.demo.form.RecipeForm;
@@ -33,13 +34,15 @@ public class RecipeService {
     this.recipeRepository = recipeRepository;
   }
 
-  public Recipe postRecipe(String name, String contents, String imageName, byte[] image,HttpServletRequest httpServletRequest) {
+  public Recipe postRecipe(String name, String contents, String imageName, byte[] image, Integer category ,HttpServletRequest httpServletRequest) {
     Recipe recipe = new Recipe();
 
     recipe.setName(name);
     recipe.setContents(contents);
     recipe.setImagename(imageName);
     recipe.setImagebinary(image);
+    recipe.setCategoryId(category);
+
     recipe.setCreated(LocalDateTime.now());
 
     String username = httpServletRequest.getRemoteUser();

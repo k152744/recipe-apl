@@ -33,10 +33,16 @@ public class Recipe {
   private byte[] imagebinary;
   @Column(name = "contents")
   private String contents;
-
+  @Column(name = "category_id")
+  private int categoryId;
+  
   @ManyToOne
   @JoinColumn(name = "user_id")
   private RegistrationUser registrationUser;
+
+  @ManyToOne
+  @JoinColumn(name = "category_id", insertable = false, updatable = false)
+  private RecipeCategory recipeCategory;
   
   @CreatedDate
   private LocalDateTime created;

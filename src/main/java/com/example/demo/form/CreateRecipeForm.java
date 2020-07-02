@@ -20,4 +20,6 @@ public class CreateRecipeForm {
   @NonNull
   private String contents;
 
+  private int category;
+
 }

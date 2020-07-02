@@ -11,6 +11,7 @@ public interface RecipeMapper{
   @Select("SELECT * FROM recipe WHERE user_id = #{user_id}")
   public List<Recipe> findRecipes(@Param("user_id") Integer user_id);
 
-  @Select("SELECT * FROM recipe WHERE name = #{name}")
+  @Select("SELECT * FROM recipe WHERE name LIKE CONCAT('%', #{name},'%') ")
   public List<Recipe> searchRecipes(@Param("name") String name);
+
 }
