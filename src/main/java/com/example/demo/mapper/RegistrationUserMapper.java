@@ -10,4 +10,7 @@ import com.example.demo.entity.RegistrationUser;
 public interface RegistrationUserMapper {
   @Select("SELECT * FROM user WHERE name = #{name}")
   public RegistrationUser findLoginName(@Param("name") String name);
+
+  @Select("SELECT * FROM user WHERE id = #{id}")
+  public RegistrationUser findLoginId(@Param("id") Integer id);
 }

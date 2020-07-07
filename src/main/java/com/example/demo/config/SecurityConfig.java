@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
               .loginProcessingUrl("/authenticate")//認証処理のリクエストurl
               .usernameParameter("name")//リクエストパラメータのname属性を表示
               .passwordParameter("password")
-              .defaultSuccessUrl("/user/show")//ログイン成功時の遷移url
+              .defaultSuccessUrl("/user/show",true)//ログイン成功時の遷移url
               .permitAll()//「/login」へのアクセスは誰でもOK
               .and()
           .logout()
