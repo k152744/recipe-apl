@@ -26,9 +26,10 @@ public class RegistrationUser{
   @CreatedDate
   private LocalDateTime created;
 
+  //,orphanRemoval = false
   @OneToMany(mappedBy = "registrationUser")
   private List<Recipe> recipeList;
-
+  
   public int getId() {
     return this.id;
   }
@@ -69,6 +70,7 @@ public class RegistrationUser{
     this.created = created;
   }
   
+  /*
   public List<Recipe> getRecipeList() {
     return this.recipeList;
   }
@@ -76,4 +78,5 @@ public class RegistrationUser{
   public void setRecipeList(List<Recipe> recipeList) {
     this.recipeList = recipeList;
   }
+  */
 }

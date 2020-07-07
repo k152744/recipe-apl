@@ -31,4 +31,13 @@ public class RegisterUserService{
 
     return userRepository.save(user);
   }
+
+  public RegistrationUser updateUser(RegistrationUser user){
+    return userRepository.save(user);
+
+  }
+
+  public void deleteUser(RegistrationUser user){
+    userRepository.delete(user);
+  }
 }

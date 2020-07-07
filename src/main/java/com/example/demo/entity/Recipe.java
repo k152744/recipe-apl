@@ -39,7 +39,7 @@ public class Recipe {
   @ManyToOne
   @JoinColumn(name = "user_id")
   private RegistrationUser registrationUser;
-
+  
   @ManyToOne
   @JoinColumn(name = "category_id", insertable = false, updatable = false)
   private RecipeCategory recipeCategory;
