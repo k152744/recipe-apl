@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,8 +27,7 @@ public class RegistrationUser{
   @CreatedDate
   private LocalDateTime created;
 
-  //,orphanRemoval = false
-  @OneToMany(mappedBy = "registrationUser")
+  @OneToMany(cascade = CascadeType.ALL,mappedBy = "registrationUser",orphanRemoval = true)
   private List<Recipe> recipeList;
   
   public int getId() {
@@ -70,7 +70,7 @@ public class RegistrationUser{
     this.created = created;
   }
   
-  /*
+  
   public List<Recipe> getRecipeList() {
     return this.recipeList;
   }
@@ -78,5 +78,5 @@ public class RegistrationUser{
   public void setRecipeList(List<Recipe> recipeList) {
     this.recipeList = recipeList;
   }
-  */
+  
 }

@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Sort;
 
 import com.example.demo.mapper.RecipeMapper;
+import com.example.demo.mapper.RegistrationUserMapper;
 import com.example.demo.entity.RecipeCategory;
+import com.example.demo.entity.RegistrationUser;
 import com.example.demo.repository.RecipeCategoryRepository;
 
 import java.util.List;
@@ -28,6 +30,9 @@ public class RecipeController {
 
   @Autowired
   private RecipeMapper recipeMapper;
+
+  @Autowired
+  private RegistrationUserMapper registrationUserMapper;
 
   @Autowired
   private RecipeCategoryRepository recipeCategoryRepository;
@@ -46,12 +51,17 @@ public class RecipeController {
 
   @GetMapping("/index")
   public String index(Model model,
-      @PageableDefault(size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+      @PageableDefault(size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,HttpServletRequest httpServletRequest) {
     var pageRecipe = recipeService.getRecipes(pageable);
     var recipes = recipeService.settingRecipes(pageRecipe);
+    
+    String username = httpServletRequest.getRemoteUser();
+    RegistrationUser user = registrationUserMapper.findLoginName(username);
+
     model.addAttribute("recipeList", recipes);
     model.addAttribute("page", pageRecipe);
     model.addAttribute("url", "/recipe/index");
+    model.addAttribute("loginUserId", user.getId());
     return "recipe/index";
   }
 

@@ -59,8 +59,10 @@ public class RecipeService {
     recipes.forEach(recipe -> {
       RecipeForm form = new RecipeForm();
 
+      form.setId(recipe.getId());
       form.setName(recipe.getName());
       form.setContents(recipe.getContents());
+      form.setUserId(recipe.getUserId());
 
       // 拡張子を取得
       form.setExtension(

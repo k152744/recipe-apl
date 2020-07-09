@@ -112,7 +112,14 @@ public class UserController {
   @PostMapping("/user/{id}/delete")
   public String userDelete(@PathVariable Integer id){
     RegistrationUser user = registrationUserMapper.findLoginId(id);
+
     registerUserService.deleteUser(user);
-    return "top";
+    return "user/delete";
   }
+
+  @GetMapping("/logout/success")
+  public String logoutSuccess(){
+    return "user/logout";
+  }
+  
 }

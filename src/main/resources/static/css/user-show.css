@@ -93,3 +93,14 @@
   padding:10px;
 }
 
+.user-delete-sentence{
+  text-align: center;
+  padding:40px 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.container-delete-btn{
+  padding:20px;
+  text-align: center;
+}

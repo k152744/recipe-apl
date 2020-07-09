@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,35 +19,26 @@ import java.time.LocalDateTime;
 
 
 @Entity
-@Table(name= "recipe")
+@Table(name= "good")
 @Data
-@NoArgsConstructor
-public class Recipe {
+//@NoArgsConstructor
+public class Good{
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private int id;
-  @Column(name = "name")
-  private String name;
-  @Column(name="imagename")
-  private String imagename;
-  @Column(name = "imagebinary")
-  private byte[] imagebinary;
-  @Column(name = "contents")
-  private String contents;
+
   @Column(name = "user_id")
   private int userId;
-  @Column(name = "category_id")
-  private int categoryId;
+  @Column(name = "recipe_id")
+  private int recipeId;
+
   
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "user_id", insertable = false, updatable = false)
   private RegistrationUser registrationUser;
-  
-  @ManyToOne
-  @JoinColumn(name = "category_id", insertable = false, updatable = false)
-  private RecipeCategory recipeCategory;
-  
-  @CreatedDate
-  private LocalDateTime created;
+
+  @ManyToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "recipe_id", insertable = false, updatable = false)
+  private Recipe recipe;
   
 }

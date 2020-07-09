@@ -80,12 +80,12 @@
   font-size: 20px;
   font-weight: bold;
   color: #FFBBFF;
-  border-bottom:1px solid #EEFFFF;
 }
 
 .recipe-sentence{
   color: white;
   padding: 10px;
+  border-top:1px solid #EEFFFF;
 }
 
 .recipe-contents{
@@ -167,4 +167,12 @@
 .search-form-contents{
   padding:30px;
   text-align: center;
+}
+
+.like-btn{
+  color:white;
+}
+
+.like-btn:hover{
+  color:red;
 }

@@ -29,6 +29,11 @@
             </div>
             <div class="recipe-contents">
               <h3 class="recipe-title" th:text="${recipe.name}">料理名</h3>
+              <form th:action="@{/like/create/{userid}/{recipeid}(userid=${loginUserId},recipeid=${recipe.id})}" method="post" name="good">
+                <a href="javascript:good.submit()" class = "like-btn" th:if="${recipe.userId != loginUserId}"> 
+                  いいね
+                </a>
+              </form>
               <p class="recipe-sentence" th:text="${recipe.contents}">
                 作り方・材料
               </p>

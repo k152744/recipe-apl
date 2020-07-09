@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/top.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/user-show.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div class = "container-menu">
+    <div class = "container-user-show">
+      <p class = "user-delete-sentence">ログアウトしました</p>
+      <div class = "container-delete-btn">
+        <a th:href="@{/}" class = "btn reg">トップページ</a>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div th:replace="~{component/footer::footer-component}"></div>
+</body>
