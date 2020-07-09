@@ -34,15 +34,14 @@ public class RecipeService {
     this.recipeRepository = recipeRepository;
   }
 
-  public Recipe postRecipe(String name, String contents, String imageName, byte[] image, Integer category ,HttpServletRequest httpServletRequest) {
+  public Recipe postRecipe(String name, String contents, String imageName, byte[] image, RecipeCategory category ,HttpServletRequest httpServletRequest) {
     Recipe recipe = new Recipe();
 
     recipe.setName(name);
     recipe.setContents(contents);
     recipe.setImagename(imageName);
     recipe.setImagebinary(image);
-    recipe.setCategoryId(category);
-
+    recipe.setRecipeCategory(category);
     recipe.setCreated(LocalDateTime.now());
 
     String username = httpServletRequest.getRemoteUser();
@@ -62,7 +61,7 @@ public class RecipeService {
       form.setId(recipe.getId());
       form.setName(recipe.getName());
       form.setContents(recipe.getContents());
-      form.setUserId(recipe.getUserId());
+      form.setUserId(recipe.getRegistrationUser().getId());
 
       // 拡張子を取得
       form.setExtension(

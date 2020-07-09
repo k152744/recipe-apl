@@ -33,12 +33,12 @@ public class Good{
   private int recipeId;
 
   
-  @ManyToOne(cascade = CascadeType.ALL)
+  /*@ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "user_id", insertable = false, updatable = false)
   private RegistrationUser registrationUser;
 
   @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "recipe_id", insertable = false, updatable = false)
   private Recipe recipe;
-  
+  */
 }

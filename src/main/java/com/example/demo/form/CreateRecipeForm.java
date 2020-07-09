@@ -2,6 +2,8 @@ package com.example.demo.form;
 
 import javax.validation.constraints.Size;
 
+import com.example.demo.entity.RecipeCategory;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
@@ -20,6 +22,6 @@ public class CreateRecipeForm {
   @NonNull
   private String contents;
 
-  private int category;
+  private RecipeCategory category;
 
 }

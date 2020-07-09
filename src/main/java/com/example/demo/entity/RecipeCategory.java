@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,6 @@ import java.util.List;
 
 @Entity
 @Table(name="recipecategory")
-@NoArgsConstructor
 public class RecipeCategory{
 
   @Id
@@ -30,9 +30,8 @@ public class RecipeCategory{
   @Column(name="name")
   private String name;
 
-  /*@OneToMany(mappedBy = "recipeCategory")
-  private List<RecipeCategory> recipeCategoryList;
-  */
+  @OneToMany(cascade = CascadeType.ALL,mappedBy = "recipeCategory",orphanRemoval = true)
+  private List<Recipe> recipeCategoryList;
 
   public int getId() {
     return this.id;
@@ -50,13 +49,11 @@ public class RecipeCategory{
     this.name = name;
   }
 
-  /*
-  public List<RecipeCategory> getRecipeCategoryList() {
+  public List<Recipe> getRecipeCategoryList() {
     return this.recipeCategoryList;
   }
 
-  public void setRecipeCategoryList(List<RecipeCategory> recipeCategoryList) {
+  public void setRecipeCategoryList(List<Recipe> recipeCategoryList) {
     this.recipeCategoryList = recipeCategoryList;
   }
-  */
 }

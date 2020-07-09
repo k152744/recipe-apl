@@ -44,8 +44,8 @@ public class RecipeController {
 
   @GetMapping("/new")
   public String newRecipe(Model model) {
-    List<RecipeCategory> category = recipeCategoryRepository.findAll();
-    model.addAttribute("category", category);
+    List<RecipeCategory> categoryAll = recipeCategoryRepository.findAll();
+    model.addAttribute("categoryAll", categoryAll);
     return "recipe/new";
   }
 

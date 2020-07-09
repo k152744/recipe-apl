@@ -1,6 +1,7 @@
 package com.example.demo.app;
 
 import com.example.demo.service.RegisterUserService;
+import com.example.demo.entity.Recipe;
 import com.example.demo.entity.RegistrationUser;
 import com.example.demo.entity.UpdateUser;
 import com.example.demo.form.RecipeForm;
@@ -17,8 +18,10 @@ import com.example.demo.mapper.RecipeMapper;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import com.example.demo.service.RecipeService;
@@ -74,7 +77,8 @@ public class UserController {
     int userId = user.getId();
     model.addAttribute("userId", userId);
 
-    var recipes = recipeMapper.findRecipes(userId);
+    Optional<RegistrationUser> loginUser= userRepository.findById(userId);
+    List<Recipe> recipes = loginUser.get().getRecipeList();
     List<RecipeForm> myRecipes = recipeService.settingMyRecipes(recipes);
     model.addAttribute("myRecipes", myRecipes);
 
@@ -83,12 +87,13 @@ public class UserController {
 
   @GetMapping("/user/{id}/edit")
   public String userEdit(@PathVariable Integer id, Model model) {
-    RegistrationUser user = registrationUserMapper.findLoginId(id);
+  
+    Optional<RegistrationUser> user= userRepository.findById(id);
     UpdateUser updateUser = new UpdateUser();
 
-    updateUser.setId(user.getId());
-    updateUser.setName(user.getName());
-    updateUser.setEmail(user.getEmail());
+    updateUser.setId(user.get().getId());
+    updateUser.setName(user.get().getName());
+    updateUser.setEmail(user.get().getEmail());
 
     model.addAttribute("updateUser", updateUser);
     return "user/edit";
@@ -111,9 +116,8 @@ public class UserController {
 
   @PostMapping("/user/{id}/delete")
   public String userDelete(@PathVariable Integer id){
-    RegistrationUser user = registrationUserMapper.findLoginId(id);
-
-    registerUserService.deleteUser(user);
+    Optional<RegistrationUser> user = userRepository.findById(id);
+    registerUserService.deleteUser(user.get());
     return "user/delete";
   }
 

@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,8 +12,9 @@ import javax.persistence.JoinColumn;
 
 import org.springframework.data.annotation.CreatedDate;
 import java.time.LocalDateTime;
-
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name= "user")
@@ -26,10 +28,23 @@ public class RegistrationUser{
 
   @CreatedDate
   private LocalDateTime created;
-
+  
   @OneToMany(cascade = CascadeType.ALL,mappedBy = "registrationUser",orphanRemoval = true)
   private List<Recipe> recipeList;
-  
+  //= new ArrayList<>();
+
+  /*
+  public void addRecipe(Recipe recipe){
+    recipeList.add(recipe);
+    recipe.setRegistrationUser(this);
+  }
+
+  public void removeRecipe(Recipe recipe){
+    recipeList.remove(recipe);
+    recipe.setRegistrationUser(null);
+  }
+  */
+
   public int getId() {
     return this.id;
   }

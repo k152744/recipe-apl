@@ -23,7 +23,7 @@
           <label>カテゴリー</label>
           <br>
           <select name="category" >
-            <option th:each="item : ${category}" th:value="${item.id}" th:text="${item.name}">カテゴリー名</option>
+            <option th:each="category : ${categoryAll}" th:value="${category.id}" th:text="${category.name}">カテゴリー名</option>
           </select>
         </div>
         <div class = "field">
