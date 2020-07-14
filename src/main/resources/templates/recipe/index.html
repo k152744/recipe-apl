@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Insert title here</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> -->
   <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
   <link th:href="@{/css/top.css}" rel="stylesheet" type="text/css">
   <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
@@ -29,9 +31,9 @@
             </div>
             <div class="recipe-contents">
               <h3 class="recipe-title" th:text="${recipe.name}">料理名</h3>
-              <form th:action="@{/like/create/{userid}/{recipeid}(userid=${loginUserId},recipeid=${recipe.id})}" method="post" name="good">
-                <a href="javascript:good.submit()" class = "like-btn" th:if="${recipe.userId != loginUserId}"> 
-                  いいね
+              <form name="good" th:if= "${recipe.userId != loginUserId}"  th:action="@{/like/create/{userid}/{recipeid}(userid=${loginUserId},recipeid=${recipe.id})}" method="post">
+                <a href="javascript:document.good.submit()" class = "like-btn" >
+                  <i class="far fa-heart like-btn"></i>
                 </a>
               </form>
               <p class="recipe-sentence" th:text="${recipe.contents}">

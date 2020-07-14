@@ -14,14 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.mapper.RegistrationUserMapper;
 import com.example.demo.repository.UserRepository;
-import com.example.demo.mapper.RecipeMapper;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.time.LocalDateTime;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import com.example.demo.service.RecipeService;
@@ -40,9 +36,6 @@ public class UserController {
   private UserRepository userRepository;
 
   @Autowired
-  private RecipeMapper recipeMapper;
-
-  @Autowired
   private RecipeService recipeService;
 
   public UserController(RegisterUserService registerUserService) {
@@ -51,7 +44,8 @@ public class UserController {
 
   @GetMapping("/signup")
   public String newUser(Model model) {
-    model.addAttribute(new UserForm());
+    UserForm userform = new UserForm();
+    model.addAttribute(userform);
     return "user/sign-up";
   }
 
@@ -102,16 +96,15 @@ public class UserController {
   @PostMapping("/user/update")
   public String userUpdate(@Validated UpdateUser updateUser,Model model) {
 
-    RegistrationUser user = registrationUserMapper.findLoginId(updateUser.getId());
+    Optional<RegistrationUser> user= userRepository.findById(updateUser.getId());
 
-    user.setName(updateUser.getName());
-    user.setEmail(updateUser.getEmail());
+    user.get().setName(updateUser.getName());
+    user.get().setEmail(updateUser.getEmail());
 
-    registerUserService.updateUser(user);
+    registerUserService.updateUser(user.get());
 
-    model.addAttribute("username", user.getName());
-
-    return "user/show";
+    return "user/update";
+    
   }
 
   @PostMapping("/user/{id}/delete")

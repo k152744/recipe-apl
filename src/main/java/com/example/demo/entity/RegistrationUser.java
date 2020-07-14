@@ -2,22 +2,22 @@ package com.example.demo.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.OneToMany;
-import javax.persistence.JoinColumn;
 
 import org.springframework.data.annotation.CreatedDate;
+
+import lombok.Data;
+
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name= "user")
+@Data
 public class RegistrationUser{
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -31,67 +31,8 @@ public class RegistrationUser{
   
   @OneToMany(cascade = CascadeType.ALL,mappedBy = "registrationUser",orphanRemoval = true)
   private List<Recipe> recipeList;
-  //= new ArrayList<>();
-
-  /*
-  public void addRecipe(Recipe recipe){
-    recipeList.add(recipe);
-    recipe.setRegistrationUser(this);
-  }
-
-  public void removeRecipe(Recipe recipe){
-    recipeList.remove(recipe);
-    recipe.setRegistrationUser(null);
-  }
-  */
-
-  public int getId() {
-    return this.id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return this.name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getEmail() {
-    return this.email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public String getPassword() {
-    return this.password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  public LocalDateTime getCreated() {
-    return this.created;
-  }
-
-  public void setCreated(LocalDateTime created) {
-    this.created = created;
-  }
   
-  
-  public List<Recipe> getRecipeList() {
-    return this.recipeList;
-  }
+  @OneToMany(cascade = CascadeType.ALL,mappedBy = "registrationUser",orphanRemoval = true)
+  private List<Good> goodList;
 
-  public void setRecipeList(List<Recipe> recipeList) {
-    this.recipeList = recipeList;
-  }
-  
 }

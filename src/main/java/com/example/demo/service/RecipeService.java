@@ -88,6 +88,7 @@ public class RecipeService {
     recipes.forEach(recipe -> {
       RecipeForm form = new RecipeForm();
 
+      form.setId(recipe.getId());
       form.setName(recipe.getName());
       form.setContents(recipe.getContents());
 
@@ -109,14 +110,15 @@ public class RecipeService {
     return forms;
   }
 
-  /*public List<Recipe> search(String name){
-    List<Recipe> result = recipeRepository.findAll();
-    return result;
-  }*/
-
-
   public Page<Recipe> getRecipes(Pageable pageable) {
     return recipeRepository.findAll(pageable);
   }
 
+  public Recipe updateRecipe(Recipe recipe){
+    return recipeRepository.save(recipe);
+  }
+
+  public void deleteRecipe(Recipe recipe){
+    recipeRepository.delete(recipe);
+  }
 }

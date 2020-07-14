@@ -11,7 +11,7 @@ import com.example.demo.entity.DbUserDetails;
 
 @Controller
 @RequestMapping()
-public class topController {
+public class TopController {
     
     @GetMapping
     public String top(Model model) {

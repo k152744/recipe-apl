@@ -20,7 +20,7 @@
           <ul>
             <a th:href="@{/user/{id}/edit(id=${userId})}"><li class = "profile-btn">プロフィール編集</li></a>
             <a th:href="@{/recipe/new}"><li class = "profile-btn">レシピ投稿</li></a>
-            <a th:href="@{/like/index}"><li class = "profile-btn">お気に入りレシピ</li></a>
+            <a th:href="@{/user/{id}/like/index(id=${userId})}"><li class = "profile-btn">お気に入りレシピ</li></a>
             <form th:action="@{/user/{id}/delete(id=${userId})}" method="post" name="deleteUser" id="delete-form">
               <a href="javascript:deleteUser.submit()">
                 <li class = "profile-btn">
@@ -46,6 +46,11 @@
               </div>
               <div class = "my-recipe-contents">
                 <h3 class="my-recipe-title" th:text="${recipe.name}">料理名</h3>
+                <a th:href="@{/recipe/{id}/edit(id=${recipe.id})}">編集</a>
+                <form th:action="@{/recipe/{id}/delete(id=${recipe.id})}" method="post" name="deleteRecipe">
+                  <a href="javascript:deleteRecipe.submit()">削除</a>
+                  <!-- <button type="submit">削除</button> -->
+                </form>
                 <p class = "my-recipe-sentence" th:text="${recipe.contents}">
                   作り方・材料
                 </p>

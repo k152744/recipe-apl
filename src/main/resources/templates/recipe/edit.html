@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/top.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div th:replace="~{component/header::header-component}"></div>
+  <div class = "container-menu">
+    <div class = "container-menu-recipe">
+      <h2>レシピを編集する</h2>
+      <form id="new-recipe"  method="post" th:action="@{/recipe/update}" enctype="multipart/form-data">
+        <div class = "field">
+          <label>料理名</label>
+          <br>
+          <input class = "recipe-dates" name = "name" th:value=${updateRecipe.name}>
+        </div>
+        <div class = "field">
+          <label>カテゴリー</label>
+          <br>
+          <select name="recipeCategory" >
+            <option th:value="${updateRecipe.recipeCategory.id}" th:text="${updateRecipe.recipeCategory.name}">カテゴリー名</option>
+            <option th:each="category : ${categoryAll}" th:value="${category.id}" th:text="${category.name}">カテゴリー名</option>
+          </select>
+        </div>
+        <div class = "field">
+          <label>画像</label>
+          <br>
+          <input type="file" name = "image" value = "画像名">
+          <input type="hidden" name = "imageName" th:value=${updateRecipe.imageName}>
+        </div>
+        <div class = "field">
+          <label>レシピ内容</label>
+          <br>
+          <textarea name = "contents" th:text="${updateRecipe.contents}"></textarea>
+        </div>
+        <div class = "actions">
+          <input type="submit" value = "投稿する" class = "submit-btn">
+        </div>
+        <input type="hidden" name = "id" th:value=${updateRecipe.id}>
+      </form>
+    </div>
+  </div>
+  <div th:replace="~{component/footer::footer-component}"></div>
+</body>
+</html>
