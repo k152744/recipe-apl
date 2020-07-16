@@ -69,8 +69,10 @@ public class RecipeController {
 
         String username = httpServletRequest.getRemoteUser();
         RegistrationUser user = registrationUserMapper.findLoginName(username);
+        List <RecipeCategory> recipeCategoryList = recipeCategoryRepository.findAll();
 
         model.addAttribute("recipeList", recipes);
+        model.addAttribute("recipeCategoryList",recipeCategoryList);
         model.addAttribute("page", pageRecipe);
         model.addAttribute("url", "/recipe/index");
         model.addAttribute("loginUserId", user.getId());
