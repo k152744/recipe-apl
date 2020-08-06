@@ -47,13 +47,13 @@ public class RecipeCategoryController {
 
     List <RecipeCategory> recipeCategoryList = recipeCategoryRepository.findAll();
 
-    String username = httpServletRequest.getRemoteUser();
-    RegistrationUser user = registrationUserMapper.findLoginName(username);
+    // int userId = Integer.parseInt(httpServletRequest.getSession().getId());
+    // RegistrationUser user = registrationUserMapper.findLoginName(username);
 
     model.addAttribute("recipeCategoryName", recipeCategory.get().getName());
     model.addAttribute("recipeList",recipesOfCategoryIndex);
     model.addAttribute("recipeCategoryList",recipeCategoryList);
-    model.addAttribute("loginUserId", user.getId());
+    // model.addAttribute("loginUserId", userId);
 
     return "category/index";
   }
