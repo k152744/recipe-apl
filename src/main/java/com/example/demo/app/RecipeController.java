@@ -2,7 +2,10 @@ package com.example.demo.app;
 
 import com.example.demo.service.RecipeService;
 import com.example.demo.form.CreateRecipeForm;
+import com.example.demo.form.RecipeForm;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.ui.Model;
@@ -64,8 +67,8 @@ public class RecipeController {
   public String index(Model model,
       @PageableDefault(size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
       HttpServletRequest httpServletRequest) {
-        var pageRecipe = recipeService.getRecipes(pageable);
-        var recipes = recipeService.settingRecipes(pageRecipe);
+        Page<Recipe> pageRecipe = recipeService.getRecipes(pageable);
+        List<RecipeForm> recipes = recipeService.settingRecipes(pageRecipe);
 
         String username = httpServletRequest.getRemoteUser();
         RegistrationUser user = registrationUserMapper.findLoginName(username);
@@ -92,8 +95,8 @@ public class RecipeController {
 
   @PostMapping("/index/research")
   public String search(Model model, @RequestParam("recipeName") String recipeName) {
-    var recipes = recipeMapper.searchRecipes(recipeName);
-    var searchRecipes = recipeService.settingMyRecipes(recipes);
+    List<Recipe> recipes = recipeMapper.searchRecipes(recipeName);
+    List<RecipeForm> searchRecipes = recipeService.settingMyRecipes(recipes);
     model.addAttribute("recipeList", searchRecipes);
     return "recipe/index";
   }
