@@ -52,7 +52,7 @@ public class RecipeService {
   }
 
   public List<RecipeForm> settingRecipes(Page<Recipe> recipes) {
-    var forms = new ArrayList<RecipeForm>();
+    List<RecipeForm> forms = new ArrayList<RecipeForm>();
 
     // RecipeをRecipeFormに
     recipes.forEach(recipe -> {
@@ -82,7 +82,7 @@ public class RecipeService {
   }
 
   public List<RecipeForm> settingMyRecipes(List<Recipe> recipes) {
-    var forms = new ArrayList<RecipeForm>();
+    List<RecipeForm> forms = new ArrayList<RecipeForm>();
 
     // RecipeをRecipeFormに
     recipes.forEach(recipe -> {
