@@ -1,0 +1,214 @@
+.container-menu-new{
+  border: solid 1px gray;
+  background-color: white;
+  margin: 30px auto;
+  width: 500px;
+  box-shadow: 0 0 8px black;
+  padding: 50px;
+  text-align: center;
+}
+
+.container-recipe-top{
+  margin:0 auto;
+  width:900px;
+}
+
+.container-menu-recipe{
+  padding: 40px;
+}
+
+.container-menu-recipe h2{
+  text-align: center;
+  padding-top:50px;
+  font-size:50px;
+  color:#FFFFBB;
+  font-weight: bold;
+}
+
+.recipe-title-sentence{
+  color:#FFFFBB;
+  text-align: center;
+}
+
+.actions{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.submit-btn{
+  border-style: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #FF0000;
+  color: white;
+  border-radius: 5px;
+}
+
+#new-recipe{
+  margin-top: 40px;
+  padding: 50px;
+}
+
+.container-menu-recipe label{
+  color: white;
+  font-weight: bold;
+}
+
+.field input{
+  margin-top: 10px;
+  min-width: 100%;
+}
+.container-menu-recipe textarea{
+  height: 300px;
+  min-width: 100%;
+  margin-top: 10px;
+}
+.field{
+  margin-bottom: 30px;
+}
+
+.container-recipe-main{
+  margin:0 auto;
+  width:900px;
+  display:flex;
+}
+
+.container-recipe-list{
+  width:800px;
+}
+
+.container-recipe-list li{
+  border: 1px solid #EEFFFF;
+  margin-bottom: 30px;
+  display: flex;
+  width: 600px;
+}
+
+.container-recipe-category{
+  width:300px;
+  margin-right:50px;
+  background-color: #FFFFCC;
+}
+
+.category-name{
+  text-align:center;
+  color:#FF9966;
+  font-weight:bold;
+  font-size:18px;
+  padding:10px 0;
+  border:1px solid #FF9966;
+}
+
+.category-name:hover{
+  color:#FFFFFF;
+  background-color: #FF9966;
+}
+
+
+.recipe-image{
+  height: 250px;
+}
+
+.recipe-title{
+  text-align: center;
+  padding: 10px 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #FFBBFF;
+}
+
+.recipe-sentence{
+  color: white;
+  padding: 10px;
+  border-top:1px solid #EEFFFF;
+}
+
+.recipe-contents{
+  width: 400px;
+  text-align: center;
+}
+
+.user-title{
+  font-size: 36px;
+  padding-bottom: 10px;
+}
+
+.input-data{
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.form-button{
+  background-color: red;
+  color: white;
+  line-height: 50px;
+  font-size: 16px;
+  width: 80%;
+  margin-top:20px;
+}
+
+.pagination__wrapper {
+  width:100%;
+  margin:auto;
+  text-align:center;
+}
+.pagination {
+  margin:auto;
+  width: 100%;
+  text-align:center;
+}
+.pagination ul {
+  display: inline-flex;
+  flex-wrap: wrap;
+  border-radius: 3px;
+  line-height: 2.2;
+}
+.pagination li {
+  color: #EEFFFF;
+  overflow: hidden;
+  margin: 4px;
+  padding: 0;
+}
+.pagination a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-decoration: none;
+  color: #fff;
+  border: dotted;
+}
+.pagination a:hover {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-decoration: none;
+  border:2px solid #fff;
+}
+
+.page-numbers {
+  width: auto;
+  padding: 0;
+  background: transparent
+}
+
+.active a {
+  opacity: 1;
+  border:2px solid #fff;
+  border-radius: 50%;
+}
+
+.search-form-contents{
+  padding:30px;
+  text-align: center;
+}
+
+.like-btn{
+  color:white;
+  font-size: 20px;
+}
+
+.like-btn:hover{
+  color:red;
+}

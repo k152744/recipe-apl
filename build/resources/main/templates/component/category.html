@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <div class="container-recipe-category" th:fragment="category-component">
+    <ul>
+      <li>
+        <a th:href = "@{/recipe/index}">
+          <p class="category-name">
+            全レシピ
+          </p>
+        </a>
+      </li>
+      <li th:each="recipeCategory : ${recipeCategoryList}" >
+        <a th:href="@{/category/{id}/index (id=${recipeCategory.id})}">
+          <p th:text=${recipeCategory.name} class="category-name">
+            カテゴリー名
+          </p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</html>

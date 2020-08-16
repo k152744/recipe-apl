@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/top.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div th:replace="~{component/header::header-component}"></div>
+  <div class = "container-menu">
+    <div class = "container-menu-new">
+      <h2 class = "user-title">プロフィール編集</h2>
+      <form id="new-user" method="post" th:action="@{/user/update}">
+        <div class = "field">
+          <label>ユーザー名</label>
+          <br>
+          <input class = "input-data" name="name" th:value=${updateUser.name}>
+        </div>
+        <div class = "field">
+          <label>メールアドレス</label>
+          <br>
+          <input class = "input-data" name="email" th:value=${updateUser.email}>
+        </div>
+        <div class = "actions">
+          <input type = "submit" value = "登録" class = "form-button">
+        </div>
+        <input type="hidden" name = "id" th:value=${updateUser.id}>
+      </form>
+    </div>
+  </div>
+  <div th:replace="~{component/footer::footer-component}"></div>
+</body>
+</html>

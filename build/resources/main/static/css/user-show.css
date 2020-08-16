@@ -1,0 +1,106 @@
+.container-user-show{
+  margin:30px auto;
+  max-width:800px;
+  background-color:white;
+  padding:15px 20px;
+}
+
+.profile-contents{
+  display:flex;
+}
+
+.user-show-title{
+  text-align: center;
+  padding:10px 0;
+  font-weight: bold;
+  color:#FF9900;
+  font-size:30px;
+}
+
+.profile-detail{
+  padding-top:50px;
+  width:200px;
+}
+
+.profile-name{
+  text-align: center;
+  font-weight: bold;
+  color:#FF9900;
+  padding:10px 0;
+  font-size: 18px;
+}
+
+.profile-btn{
+  height:40px;
+  margin:14px 0;
+  padding:5px 0;
+  font-size: 14px;
+  color:#FF6600;
+  border: solid;
+  border-color: #FF6600;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.profile-btn:hover{
+  background-color: #FF6600;
+  color:white;
+}
+
+#logout-value{
+  border-color: #FF0000;
+  color:#FF0000;
+}
+
+#logout-value:hover{
+  background-color: #FF0000;
+  color:white;
+}
+
+.profile-myrecipe{
+  width:calc(100% - 200px);
+  padding:10px 20px;
+}
+
+.myrecipe-title{
+  text-align: center;
+  font-weight: bold;
+  color:#FF6600;
+  padding:10px 0;
+  font-size: 18px;
+}
+
+.my-recipe-detail{
+  border: 1px solid #000000;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.my-recipe-contents{
+  text-align: center;
+  width:100%;
+}
+
+.my-recipe-title{
+  font-weight: bold;
+  color:#FF9900;
+  padding:10px 0;
+  font-size: 18px;
+  border-bottom: 1px solid #000000;
+}
+
+.my-recipe-sentence{
+  padding:10px;
+}
+
+.user-delete-sentence{
+  text-align: center;
+  padding:40px 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.container-delete-btn{
+  padding:20px;
+  text-align: center;
+}

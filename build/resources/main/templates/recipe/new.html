@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/top.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div th:replace="~{component/header::header-component}"></div>
+  <div class = "container-menu">
+    <div class = "container-menu-recipe">
+      <h2>レシピを投稿する</h2>
+      <p class = "recipe-title-sentence">料理名、画像、レシピ内容を入力しよう</p>
+      <form id="new-recipe"  method="post" th:action="@{/recipe/index}" enctype="multipart/form-data">
+        <div class = "field">
+          <label>料理名</label>
+          <br>
+          <input placeholder="料理名を入力してください" class = "recipe-dates" name = "name">
+        </div>
+        <div class = "field">
+          <label>カテゴリー</label>
+          <br>
+          <select name="category" >
+            <option th:each="category : ${categoryAll}" th:value="${category.id}" th:text="${category.name}">カテゴリー名</option>
+          </select>
+        </div>
+        <div class = "field">
+          <label>画像</label>
+          <br>
+          <input type="file" name = "image" >
+        </div>
+        <div class = "field">
+          <label>レシピ内容</label>
+          <br>
+          <textarea name = "contents" placeholder="レシピの内容を入力してください(手順・材料等)"></textarea>
+        </div>
+        <div class = "actions">
+          <input type="submit" value = "投稿する" class = "submit-btn">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div th:replace="~{component/footer::footer-component}"></div>
+</body>
+</html>

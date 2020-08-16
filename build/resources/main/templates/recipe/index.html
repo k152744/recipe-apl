@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+  <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/top.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div th:replace="~{component/header::header-component}"></div>
+  <div class="container-menu">
+    <div class="container-menu-recipe">
+      <div class="container-recipe-top">
+        <h2>レシピ一覧</h2>
+        <p class="recipe-title-sentence">作りたい料理を検索してください</p>
+        <div class = "search-form-contents">
+          <form method="post" name="search-post" th:action="@{/recipe/index/research}">
+            <input type="text" class="search-form" id="recipe_name" name="recipeName" th:value="${recipeName}">
+            <input type="submit" value="検索">
+          </form>
+        </div>
+      </div>
+      <div class="container-recipe-main">
+        <div th:replace="~{component/category::category-component}"></div>
+        <div class="container-recipe-list">
+          <ul th:each="recipe : ${recipeList}">
+            <li>
+              <div class="recipe-image">
+                <img th:src="${recipe.base64string}" width="200" height="250">
+              </div>
+              <div class="recipe-contents">
+                <h3 class="recipe-title" th:text="${recipe.name}">料理名</h3>
+                <form name="good" th:if= "${recipe.userId != loginUserId}"  th:action="@{/like/create/{userid}/{recipeid}(userid=${loginUserId},recipeid=${recipe.id})}" method="post">
+                  <a href="javascript:document.good.submit()" class = "like-btn" >
+                    <i class="far fa-heart like-btn"></i>
+                  </a>
+                </form>
+                <p class="recipe-sentence" th:text="${recipe.contents}">
+                  作り方・材料
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div th:fragment='paginationbar' class="pagination__wrapper">
+      <nav class="pagination">
+        <ul class="page-numbers">
+          <li>
+            <a th:href="@{${url}(page=0)}"><span>←</span></a>
+          </li>
+          <li th:each='i : ${#numbers.sequence(0, page.totalPages-1)}' th:class="(${i}==${page.number})? 'active' : 'page-content'">
+                <a th:if='${i}==${page.number}' th:href="@{${url}(page=${i})}">
+                  <span th:text='${i+1}'>1</span>
+                </a>
+                <a th:if='${i}!=${page.number}' th:href="@{${url}(page=${i})}">
+                    <span th:text='${i+1}'>1</span>
+                </a>
+            </li>
+            <li>
+                <a  th:href="@{${url}(page=(${page.totalPages}-1))}"><span>➝</span></a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div th:replace="~{component/footer::footer-component}"></div>
+</body>
+</html>
