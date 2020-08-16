@@ -60,9 +60,10 @@ public class GoodController {
   @GetMapping("/user/{id}/like/index")
   public String index(Model model, @PathVariable("id") Integer userId){
     Optional<RegistrationUser> loginUser = userRepository.findById(userId);
-
+    
     List<Recipe> goodRecipe = new ArrayList<>();
     for(Good good : loginUser.get().getGoodList()){
+      //エラー
       goodRecipe.add(good.getRecipe());
     }
     List<RecipeForm> myGoodRecipes = recipeService.settingMyRecipes(goodRecipe);

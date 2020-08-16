@@ -53,7 +53,7 @@ public class UserController {
   public String create(@Validated UserForm userform) {
 
     RegistrationUser user = new RegistrationUser();
-
+    //user.get()エラー
     user.setName(userform.getName());
     user.setEmail(userform.getEmail());
     user.setPassword(userform.getPassword());
@@ -68,10 +68,12 @@ public class UserController {
     model.addAttribute("username", username);
 
     RegistrationUser user = registrationUserMapper.findLoginName(username);
+    //user.get()エラー
     int userId = user.getId();
     model.addAttribute("userId", userId);
 
     Optional<RegistrationUser> loginUser= userRepository.findById(userId);
+    //エラー
     List<Recipe> recipes = loginUser.get().getRecipeList();
     List<RecipeForm> myRecipes = recipeService.settingMyRecipes(recipes);
     model.addAttribute("myRecipes", myRecipes);
@@ -85,6 +87,7 @@ public class UserController {
     Optional<RegistrationUser> user= userRepository.findById(id);
     UpdateUser updateUser = new UpdateUser();
 
+    //user.get()エラー
     updateUser.setId(user.get().getId());
     updateUser.setName(user.get().getName());
     updateUser.setEmail(user.get().getEmail());
@@ -95,9 +98,9 @@ public class UserController {
 
   @PostMapping("/user/update")
   public String userUpdate(@Validated UpdateUser updateUser,Model model) {
-
+    //updateUserエラー
     Optional<RegistrationUser> user= userRepository.findById(updateUser.getId());
-
+    //updateUserエラー
     user.get().setName(updateUser.getName());
     user.get().setEmail(updateUser.getEmail());
 
