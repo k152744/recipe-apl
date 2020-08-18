@@ -9,8 +9,8 @@ buildscript {
     // }
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		// classpath "io.freefair.gradle:lombok-plugin:5.1.1"
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 }
 
@@ -19,9 +19,10 @@ buildscript {
 // 	id 'application'
 // 	id("io.freefair.lombok") version "5.1.1"
 // }
-plugins {   
-   id "io.freefair.lombok" version "5.1.1" apply false
-}
+// plugins {
+// 	id "io.freefair.lombok" version "5.1.1"
+// 	id 'java'
+// }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
